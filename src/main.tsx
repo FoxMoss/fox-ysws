@@ -2,7 +2,7 @@ import { ComponentInstance, type FC } from "dreamland/core";
 import { Route, Router } from "dreamland/router";
 
 function App(this: FC<{ url?: string }, { el: ComponentInstance<any> }>) {
-  let title = "Fox YSWS";
+  let title = "Palatine Hill";
 
   return (
     <>
@@ -14,6 +14,7 @@ function App(this: FC<{ url?: string }, { el: ComponentInstance<any> }>) {
       <>
         <title attr:innerText={title}></title>
         <meta property="og:title" content={title} />
+        <link rel="icon" type="image/png" href="/logo.png" />
       </>
     </>
   );

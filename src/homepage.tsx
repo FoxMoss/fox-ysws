@@ -1,4 +1,4 @@
-import DOMPurify  from "isomorphic-dompurify";
+import DOMPurify from "isomorphic-dompurify";
 import { ComponentChild, css, type FC } from "dreamland/core";
 import { Marked } from "marked";
 import { markedHighlight } from "marked-highlight";
@@ -23,11 +23,11 @@ const marked = new Marked(
   }),
 );
 
-function DualityHeader(this: FC<{ children?: ComponentChild }, {}>) {
+function PalatineHeader(this: FC<{ children?: ComponentChild }, {}>) {
   return (
     <div class="header">
       <div>
-        <div class="lato-black">Duality:</div>
+        <div class="lato-black">Palatine Hill:</div>
         <div class="border" />
       </div>
       <div class="lato-bold title">{this.children}</div>
@@ -35,7 +35,7 @@ function DualityHeader(this: FC<{ children?: ComponentChild }, {}>) {
   );
 }
 `k`;
-DualityHeader.style = css`
+PalatineHeader.style = css`
   .header {
     display: flex;
     height: 30px;
@@ -49,7 +49,7 @@ DualityHeader.style = css`
   }
   .border {
     position: absolute;
-    width: 56px;
+    width: 87px;
     border: 1px solid #5c4e43;
     filter: url(#squiggle-large);
   }
@@ -69,7 +69,7 @@ function IndividualVote(
 ) {
   return (
     <div>
-      <DualityHeader>Determine an course of action</DualityHeader>
+      <PalatineHeader>Determine an course of action</PalatineHeader>
       <div class="content">
         <div class="content-box">
           <h2 class="lato-black">{this.objective}</h2>
@@ -137,7 +137,7 @@ function Voting(
 ) {
   return (
     <div>
-      <DualityHeader>Vote</DualityHeader>
+      <PalatineHeader>Vote</PalatineHeader>
       <div>
         {use(this.posts).map((posts) => {
           return posts.map((post, index) => (
@@ -228,7 +228,7 @@ function PitchBox(
   };
   return (
     <div>
-      <DualityHeader>Pitch</DualityHeader>
+      <PalatineHeader>Pitch</PalatineHeader>
       <div class="lato-bold content">
         <form class="form">
           <div class="form-body">
@@ -274,7 +274,7 @@ PitchBox.style = css`
   }
   .form-body {
     display: grid;
-    grid-template-columns: 20% auto;
+    grid-template-columns: 20% calc(80% - 10px);
     gap: 10px;
   }
   #pitch-explanation {
@@ -288,19 +288,19 @@ export default function Homepage(this: FC<{}, {}>) {
     <div>
       <div class="container">
         <div class="paragraph">
-          <h1 class="title lato-black">Duality</h1>
+          <h1 class="title lato-black">Palatine Hill</h1>
           <div class="border" />
         </div>
 
         <h3 class="lato-bold paragraph">
-          A HackClub YSWS about making cool things.
+          A HackClub YSWS about pitching and making interesting projects.
         </h3>
 
         <h3 class="lato-bold paragraph">
-          What do we count as cool? In short I like Hacker News's definition:
-          "anything that gratifies one's intellectual curiosity". Which means
-          you get to decide, if you find it piques you're curiosity then it has
-          a place here.
+          What do we count as interesting? In short I like Hacker News's
+          definition: "anything that gratifies one's intellectual curiosity".
+          Which means you get to decide, if you find it piques your curiosity
+          then it has a place here.
         </h3>
 
         <h3 class="lato-bold paragraph">
@@ -426,7 +426,7 @@ Homepage.style = css`
   }
 
   .title {
-    width: 200px;
+    width: 300px;
     margin-bottom: 0;
     font-size: xxx-large;
   }
@@ -455,7 +455,7 @@ Homepage.style = css`
   }
   .border {
     position: absolute;
-    width: 160px;
+    width: 260px;
     border: 2px solid #5c4e43;
     filter: url(#squiggle);
   }
