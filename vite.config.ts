@@ -1,11 +1,21 @@
 import { defineConfig } from "vite";
-import { devSsr } from "dreamland/vite";
-
+import { cssMinifier, devSsr } from "dreamland/vite";
 
 export default defineConfig({
-	plugins: [
-		devSsr({
-			entry: "/src/main-server.ts",
+  build: {
+    rolldownOptions: {
+      input: ["/index.html"],
+      output: {
+        codeSplitting: true,
+      },
+    },
+  },
+  plugins: [
+    cssMinifier({
+			include: ["src/**/*.tsx"],
 		}),
-	],
+    devSsr({
+      entry: "/src/main-server.ts",
+    }),
+  ],
 });

@@ -1,4 +1,4 @@
-import DOMPurify from "dompurify";
+import DOMPurify  from "isomorphic-dompurify";
 import { ComponentChild, css, type FC } from "dreamland/core";
 import { Marked } from "marked";
 import { markedHighlight } from "marked-highlight";
@@ -293,8 +293,7 @@ export default function Homepage(this: FC<{}, {}>) {
         </div>
 
         <h3 class="lato-bold paragraph">
-          A HackClub YSWS about making <span class="underline">cool</span>{" "}
-          things.
+          A HackClub YSWS about making cool things.
         </h3>
 
         <h3 class="lato-bold paragraph">
@@ -311,7 +310,7 @@ export default function Homepage(this: FC<{}, {}>) {
           <div class="horizontal-line" />
           <div class="embed-body">
             <PitchBox
-              readonly={true}
+              readonly={false}
               submit_disabled={true}
               title={"Adding eval to rust"}
               explanation={
@@ -424,12 +423,12 @@ Homepage.style = css`
   .rsvp {
     width: 100%;
     height: 30px;
-
   }
-  
+
   .title {
     width: 200px;
     margin-bottom: 0;
+    font-size: xxx-large;
   }
 
   .embed {
@@ -456,7 +455,7 @@ Homepage.style = css`
   }
   .border {
     position: absolute;
-    width: 100px;
+    width: 160px;
     border: 2px solid #5c4e43;
     filter: url(#squiggle);
   }

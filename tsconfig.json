@@ -19,8 +19,7 @@
 		"noUncheckedSideEffectImports": true,
 		"jsx": "react-jsx",
 		"jsxImportSource": "dreamland",
-    "erasableSyntaxOnly": true,
-    "jsxFragmentFactory": "Fragment"
+    "erasableSyntaxOnly": true
 	},
 	"include": ["src"]
 }
