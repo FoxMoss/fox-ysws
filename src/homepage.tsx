@@ -412,7 +412,7 @@ export default function Homepage(this: FC<{}, {}>) {
         </h3>
         <br />
         <h3 class="lato-bold paragraph">
-          If this sounds interesting to you, RSVP.
+          If this sounds interesting to you, RSVP to get notifed when it launches.
         </h3>
         <button class="rsvp">RSVP</button>
       </div>
