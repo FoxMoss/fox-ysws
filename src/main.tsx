@@ -1,8 +1,41 @@
 import { ComponentInstance, type FC } from "dreamland/core";
 import { Route, Router } from "dreamland/router";
+import mermaid from "mermaid";
+
+mermaid.initialize({
+  theme: "base",
+  look: "handDrawn",
+  fontFamily: "Lato",
+  themeCSS: "font-weight: 700;",
+});
 
 function App(this: FC<{ url?: string }, { el: ComponentInstance<any> }>) {
   let title = "Palatine Hill";
+
+  this.cx.mount = () => {
+    let velocity = 0;
+    let last_scroll = window.scrollY;
+    document.addEventListener(
+        "scroll", (_: Event) => {
+          velocity += Math.abs(window.scrollY - last_scroll)/500;
+          velocity %= 2;
+          last_scroll = window.scrollY;
+        });
+
+    function frame(_ : Number) {
+      
+
+      document.getElementById("animatecomposite")
+          ?.setAttribute("k2", `${Math.abs(velocity-1)}`);
+      document.getElementById("animatecomposite")
+          ?.setAttribute("k3", `${1-Math.abs(velocity-1)}`);
+
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+
+    document.getElementById("seedanimate");
+  };
 
   return (
     <>

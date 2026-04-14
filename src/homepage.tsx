@@ -4,6 +4,7 @@ import { Marked } from "marked";
 import { markedHighlight } from "marked-highlight";
 import hljs from "highlight.js";
 import "highlight.js/styles/stackoverflow-light.css";
+import mermaid from "mermaid";
 
 type Post = {
   name: string;
@@ -232,7 +233,7 @@ function PitchBox(
       <div class="lato-bold content">
         <form class="form">
           <div class="form-body">
-            <label for="pitch-title">clickbait title</label>
+            <label for="pitch-title">title</label>
             <input
               type="text"
               id="pitch-name"
@@ -282,8 +283,10 @@ PitchBox.style = css`
     resize: vertical;
   }
 `;
-
 export default function Homepage(this: FC<{}, {}>) {
+  this.cx.mount = () => {
+    mermaid.run();
+  };
   return (
     <div>
       <div class="container">
@@ -293,7 +296,7 @@ export default function Homepage(this: FC<{}, {}>) {
         </div>
 
         <h3 class="lato-bold paragraph">
-          A HackClub YSWS about pitching and making interesting projects.
+          A HackClub competion about pitching and making interesting projects.
         </h3>
 
         <h3 class="lato-bold paragraph">
@@ -302,6 +305,38 @@ export default function Homepage(this: FC<{}, {}>) {
           Which means you get to decide, if you find it piques your curiosity
           then it has a place here.
         </h3>
+
+        <div class="part-table-container">
+          <div class="part-table-bg">
+            <div class="part-bg"></div>
+            <div class="part-bg"></div>
+            <div class="part-bg"></div>
+            <div class="part-bg"></div>
+            <div class="part-bg"></div>
+          </div>
+          <div class="part-table lato-bold">
+            <div class="part">
+              <div class="lato-black">Part 1. Sign up</div>
+              Any time until June 21st 2026
+            </div>
+            <div class="part">
+              <div class="lato-black">Part 2. Pitch & Vote </div>
+              June 21st 2026 until June 28th 2026
+            </div>
+            <div class="part">
+              <div class="lato-black">Part 3. Make your project.</div>
+              When you pitch until July 18th 2026
+            </div>
+            <div class="part">
+              <div class="lato-black">Part 4. Vote again!</div>
+              July 18th 2026 to July 25th 2026
+            </div>
+            <div class="part">
+              <div class="lato-black">Part 5. Prizes and shop open.</div>
+              July 25th 2026 to August 25th 2026
+            </div>
+          </div>
+        </div>
 
         <h3 class="lato-bold paragraph">
           It's fairly simple, in the first week you'll pitch an idea.
@@ -332,7 +367,7 @@ export default function Homepage(this: FC<{}, {}>) {
                 {
                   name: "Adding eval to Rust",
                   points: 112,
-                  author: "You!",
+                  author: "William Daniel",
                   slackDiscusion: "about:blank",
                 },
                 {
@@ -368,9 +403,7 @@ export default function Homepage(this: FC<{}, {}>) {
         </h3>
 
         <h3 class="lato-bold paragraph">
-          The coolest pitches, if made and shipped will get currency to spend on
-          prizes. How do we determine if you're project was shipped? We ask your
-          voters.
+          Now is the time to make your project! You will be given 3 weeks with little obligations to this program 
         </h3>
 
         <div class="embed">
@@ -410,9 +443,23 @@ export default function Homepage(this: FC<{}, {}>) {
         <h3 class="lato-bold paragraph">
           In either case only a majority is needed for the decision to be made.
         </h3>
+
+            
+        <h3 class="lato-bold paragraph">
+          Your final points is weighted based on how you did in three catagories.
+        </h3>
+        <pre class="mermaid">
+          {`
+pie 
+    "Pitch Score" : 30
+    "Project Score" : 65
+    "Bonuses! Including referals." : 5
+`}
+        </pre>
         <br />
         <h3 class="lato-bold paragraph">
-          If this sounds interesting to you, RSVP to get notifed when it launches.
+          If this sounds interesting to you, RSVP to get notifed when it
+          launches.
         </h3>
         <button class="rsvp">RSVP</button>
       </div>
@@ -475,5 +522,50 @@ Homepage.style = css`
     width: 100%;
     background: #ead8c0;
     padding-bottom: 10px;
+  }
+
+  .part-table-bg {
+    position: absolute;
+    transform: translate(-4px, -4px);
+    width: calc(100%);
+    height: calc(100%);
+    background: #5c4e43;
+    filter: url(#squiggle);
+
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% auto;
+    gap: 4px;
+    padding: 4px;
+    grid-auto-flow: column;
+  }
+
+  .part-table-container {
+    position: relative;
+    margin: 10px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
+  .part-table {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% auto;
+    justify-content: stretch;
+    grid-auto-flow: column;
+    gap: 4px;
+  }
+
+  .part-bg {
+    position: relative;
+    background: #ead8c0;
+  }
+
+  .part {
+    position: relative;
+    z-index: 1;
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+  .mermaid > svg {
+    max-height: 40vh;
   }
 `;
